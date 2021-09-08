@@ -28,27 +28,31 @@ public class Main {
         entity[4] = new Robot();
         entity[5] = new Robot();
 
-//        for (Object o : entity) {
-//            for (int i : barrier) {
-//                if (o.getClass().getSimpleName().equals("Human")) {
-//                    if ()
-//                }
-//            }
-//        }
-//        Run humanRuns = new Human();
-//        Run catRuns = new Cat();
-//        Run robotRuns = new Robot();
-//
-//        Jump humanJumping = new Human();
-//        Jump catJumping = new Cat();
-//        Jump robotJumping = new Robot();
-//
-//        humanRuns.run(track1.getTrackLength());
-//        catRuns.run(track1.getTrackLength());
-//        robotRuns.run(track1.getTrackLength());
-//
-//        humanJumping.jump(wall1.getWallHeight());
-//        catJumping.jump(wall1.getWallHeight());
-//        robotJumping.jump(wall1.getWallHeight());
+        for (Object o : entity) {
+            for (int j = 0; j < barrier.length; j++) {
+                if (j < 5) {
+                    if (o.getClass().getSimpleName().equals("Human")) {
+                        ((Human) o).run(barrier[j]);
+                    }
+                    if (o.getClass().getSimpleName().equals("Cat")) {
+                        ((Cat) o).run(barrier[j]);
+                    }
+                    if (o.getClass().getSimpleName().equals("Robot")) {
+                        ((Robot) o).run(barrier[j]);
+                    }
+                }
+                else {
+                    if (o.getClass().getSimpleName().equals("Human")) {
+                        ((Human) o).jump(barrier[j]);
+                    }
+                    if (o.getClass().getSimpleName().equals("Cat")) {
+                        ((Cat) o).jump(barrier[j]);
+                    }
+                    if (o.getClass().getSimpleName().equals("Robot")) {
+                        ((Robot) o).jump(barrier[j]);
+                    }
+                }
+            }
+        }
     }
 }
