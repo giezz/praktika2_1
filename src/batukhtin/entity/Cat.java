@@ -8,8 +8,8 @@ import batukhtin.interfaces.Run;
  */
 public class Cat implements Jump, Run {
 
-    int maxJumpHeight = 10;
-    int maxRunDistance = 100;
+    public int maxJumpHeight = 10;
+    public int maxRunDistance = 100;
 
     public void run(int distance) {
         if (distance < maxRunDistance && distance > 0) System.out.println("cat ran " + distance);

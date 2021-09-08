@@ -32,13 +32,16 @@ public class Main {
             for (int j = 0; j < barrier.length; j++) {
                 if (j < 5) {
                     if (o.getClass().getSimpleName().equals("Human")) {
-                        ((Human) o).run(barrier[j]);
+                        if (((Human) o).maxRunDistance < barrier[j]) break;
+                        else ((Human) o).run(barrier[j]);
                     }
                     if (o.getClass().getSimpleName().equals("Cat")) {
-                        ((Cat) o).run(barrier[j]);
+                        if (((Cat) o).maxRunDistance < barrier[j]) break;
+                        else ((Cat) o).run(barrier[j]);
                     }
                     if (o.getClass().getSimpleName().equals("Robot")) {
-                        ((Robot) o).run(barrier[j]);
+                        if (((Robot) o).maxRunDistance < barrier[j]) break;
+                        else ((Robot) o).run(barrier[j]);
                     }
                 }
                 else {
