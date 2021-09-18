@@ -1,23 +1,34 @@
 package batukhtin.entity;
 
-import batukhtin.interfaces.Jump;
-import batukhtin.interfaces.Run;
+import batukhtin.interfaces.Entity;
 
 /**
  * Created by class on 08.09.2021.
  */
-public class Robot implements Jump, Run {
+public class Robot implements Entity {
 
-    public int maxJumpHeight = 100;
-    public int maxRunDistance = 500;
+    private final int maxJumpHeight = 100;
+    private final int maxRunDistance = 500;
 
-    public void run(int distance) {
-        if (distance < maxRunDistance && distance > 0) System.out.println("robot ran " + distance);
-        else System.out.println("robot can't run " + distance);
+    public boolean run(int distance) {
+        if (distance < maxRunDistance && distance > 0) {
+            System.out.println("robot ran " + distance);
+            return true;
+        }
+        else {
+            System.out.println("robot can't run " + distance);
+            return false;
+        }
     }
 
-    public void jump(int height) {
-        if (height < maxJumpHeight && height > 0) System.out.println("robot jumped " + height);
-        else System.out.println("robot can't jump " + height);
+    public boolean jump(int height) {
+        if (height < maxJumpHeight && height > 0) {
+            System.out.println("robot jumped " + height);
+            return true;
+        }
+        else {
+            System.out.println("robot can't jump " + height);
+            return false;
+        }
     }
 }

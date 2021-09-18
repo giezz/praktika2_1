@@ -1,17 +1,19 @@
 package batukhtin.entity;
 
+import batukhtin.interfaces.Obstacle;
+
 /**
  * Created by class on 08.09.2021.
  */
-public class Wall {
+public class Wall implements Obstacle {
 
-    public int wallHeight;
+    private int wallHeight;
 
     public Wall(int wallHeight) {
         this.wallHeight = wallHeight;
     }
 
-    public int getWallHeight() {
+    public int getSize() {
         return wallHeight;
     }
 

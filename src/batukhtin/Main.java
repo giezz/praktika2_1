@@ -1,58 +1,45 @@
 package batukhtin;
 
 import batukhtin.entity.*;
-import batukhtin.interfaces.Jump;
-import batukhtin.interfaces.Run;
+import batukhtin.interfaces.Entity;
+import batukhtin.interfaces.Obstacle;
 
 public class Main {
 
     public static void main(String[] args) {
 
-        int[] barrier = new int[10];
-        barrier[0] = new Wall(10).getWallHeight();
-        barrier[1] = new Wall(20).getWallHeight();
-        barrier[2] = new Wall(30).getWallHeight();
-        barrier[3] = new Wall(40).getWallHeight();
-        barrier[4] = new Wall(50).getWallHeight();
-        barrier[5] = new Track(25).getTrackLength();
-        barrier[6] = new Track(50).getTrackLength();
-        barrier[7] = new Track(75).getTrackLength();
-        barrier[8] = new Track(100).getTrackLength();
-        barrier[9] = new Track(125).getTrackLength();
+        Obstacle[] barriers = new Obstacle[10];
+        barriers[0] = new Wall(10);
+        barriers[1] = new Wall(20);
+        barriers[2] = new Wall(30);
+        barriers[3] = new Wall(40);
+        barriers[4] = new Wall(50);
+        barriers[5] = new Track(25);
+        barriers[6] = new Track(50);
+        barriers[7] = new Track(75);
+        barriers[8] = new Track(100);
+        barriers[9] = new Track(125);
 
-        Object[] entity = new Object[6];
-        entity[0] = new Human();
-        entity[1] = new Human();
-        entity[2] = new Cat();
-        entity[3] = new Cat();
-        entity[4] = new Robot();
-        entity[5] = new Robot();
+        Entity[] entities = new Entity[6];
+        entities[0] = new Human();
+        entities[1] = new Human();
+        entities[2] = new Cat();
+        entities[3] = new Cat();
+        entities[4] = new Robot();
+        entities[5] = new Robot();
 
-        for (Object o : entity) {
-            for (int j = 0; j < barrier.length; j++) {
-                if (j < 5) {
-                    if (o.getClass().getSimpleName().equals("Human")) {
-                        if (((Human) o).maxRunDistance < barrier[j]) break;
-                        else ((Human) o).run(barrier[j]);
-                    }
-                    if (o.getClass().getSimpleName().equals("Cat")) {
-                        if (((Cat) o).maxRunDistance < barrier[j]) break;
-                        else ((Cat) o).run(barrier[j]);
-                    }
-                    if (o.getClass().getSimpleName().equals("Robot")) {
-                        if (((Robot) o).maxRunDistance < barrier[j]) break;
-                        else ((Robot) o).run(barrier[j]);
+        for (Entity entity : entities) {
+            for (Obstacle barrier : barriers) {
+                if (barrier instanceof Wall) {
+                    if (!entity.jump(barrier.getSize())) {
+                        System.out.println(" \nnext entity\n");
+                        break;
                     }
                 }
-                else {
-                    if (o.getClass().getSimpleName().equals("Human")) {
-                        ((Human) o).jump(barrier[j]);
-                    }
-                    if (o.getClass().getSimpleName().equals("Cat")) {
-                        ((Cat) o).jump(barrier[j]);
-                    }
-                    if (o.getClass().getSimpleName().equals("Robot")) {
-                        ((Robot) o).jump(barrier[j]);
+                if (barrier instanceof Track) {
+                    if (!entity.run(barrier.getSize())) {
+                        System.out.println(" \nnext entity\n");
+                        break;
                     }
                 }
             }
