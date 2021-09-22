@@ -1,11 +1,12 @@
 package batukhtin.entity;
 
 import batukhtin.interfaces.Entity;
+import batukhtin.interfaces.SuperJump;
 
 /**
  * Created by class on 08.09.2021.
  */
-public class Robot implements Entity {
+public class Robot implements Entity, SuperJump {
 
     private final int maxJumpHeight = 100;
     private final int maxRunDistance = 500;
@@ -30,5 +31,9 @@ public class Robot implements Entity {
             System.out.println("robot can't jump " + height);
             return false;
         }
+    }
+
+    public void superJump(int height) {
+        System.out.println("robot superjumped through " + height);
     }
 }
